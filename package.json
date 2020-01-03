@@ -1,0 +1,26 @@
+{
+  "name": "iview-admin-table",
+  "version": "1.0.0",
+  "description": "后台管理专用表格组件",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@js1314/exceljs": "^1.0.0",
+    "@js1314/nativejs": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/js1314/iview-admin-table.git"
+  },
+  "keywords": [
+    "iview-admin-table"
+  ],
+  "author": "zyl <733433@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/js1314/iview-admin-table/issues"
+  },
+  "homepage": "https://github.com/js1314/iview-admin-table#readme"
+}
