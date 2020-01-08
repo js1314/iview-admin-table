@@ -9,56 +9,52 @@
         :admin="admin"/>
     </div>
     <div class="admin-table-toolbar">
-      <Row type="flex">
-        <Col span="8" class="left">
-          <Button v-if="insert.show" type="primary" icon="md-add" @click="showInsert()">{{insert.text}}</Button>
-          <Button
-            v-if="exPort.show"
-            type="primary"
-            @click="handleExport()"
-            :loading="exporting">{{exPort.text}}
-          </Button>
-          <Upload
-            v-if="imPort.show"
-            action=""
-            :before-upload="handleBeforeImport"
-            :accept="imPort.accept"
-            :show-upload-list="false"
-            style="display:inline;">
-            <Button icon="ios-cloud-upload-outline" :loading="importing">{{imPort.text}}</Button>
-          </Upload>
-          <Button
-            v-for="(toolbar, index) in toolbars"
-            v-if="toolbar.show"
-            :key="index"
-            :type="toolbar.type"
-            :icon="toolbar.icon"
-            @click.stop="handleButton(toolbar)">{{toolbar.text}}
-          </Button>
-          <RadioGroup
-            v-if="displayMode.show" v-model="displayMode.current" type="button"
-            @on-change="displayMode.change">
-            <Radio label="grid" title="网格模式">
-              <Icon type="md-grid" :size="16"></Icon>
-            </Radio>
-            <Radio label="list" title="列表模式">
-              <Icon type="md-list-box" :size="16"></Icon>
-            </Radio>
-            <Radio label="card" title="卡片模式">
-              <Icon type="md-card" :size="16"></Icon>
-            </Radio>
-          </RadioGroup>
-        </Col>
-        <Col v-if="search.show && search.placement === 'toolbar'" span="16" class="right">
-          <Row type="flex" justify="end">
-            <component
-              :is="search.component"
-              :row="conditions"
-              :config="search"
-              :admin="admin"/>
-          </Row>
-        </Col>
-      </Row>
+      <div class="left">
+        <Button v-if="insert.show" type="primary" icon="md-add" @click="showInsert()">{{insert.text}}</Button>
+        <Button
+          v-if="exPort.show"
+          type="primary"
+          @click="handleExport()"
+          :loading="exporting">{{exPort.text}}
+        </Button>
+        <Upload
+          v-if="imPort.show"
+          action=""
+          :before-upload="handleBeforeImport"
+          :accept="imPort.accept"
+          :show-upload-list="false"
+          style="display:inline;">
+          <Button icon="ios-cloud-upload-outline" :loading="importing">{{imPort.text}}</Button>
+        </Upload>
+        <Button
+          v-for="(toolbar, index) in toolbars"
+          v-if="toolbar.show"
+          :key="index"
+          :type="toolbar.type"
+          :icon="toolbar.icon"
+          @click.stop="handleButton(toolbar)">{{toolbar.text}}
+        </Button>
+        <RadioGroup
+          v-if="displayMode.show" v-model="displayMode.current" type="button"
+          @on-change="displayMode.change">
+          <Radio label="grid" title="网格模式">
+            <Icon type="md-grid" :size="16"></Icon>
+          </Radio>
+          <Radio label="list" title="列表模式">
+            <Icon type="md-list-box" :size="16"></Icon>
+          </Radio>
+          <Radio label="card" title="卡片模式">
+            <Icon type="md-card" :size="16"></Icon>
+          </Radio>
+        </RadioGroup>
+      </div>
+      <div v-if="search.show && search.placement === 'toolbar'" class="right">
+        <component
+          :is="search.component"
+          :row="conditions"
+          :config="search"
+          :admin="admin"/>
+      </div>
     </div>
     <TableCard v-if="displayMode.current == 'card'" :data="data" :admin="admin"/>
     <TableList v-else-if="displayMode.current == 'list'" :data="data" :admin="admin"/>

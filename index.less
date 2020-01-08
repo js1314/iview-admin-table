@@ -5,10 +5,16 @@
 }
 
 .admin-table-toolbar {
+  display: flex;
   margin-bottom: 5px;
 
   .ivu-btn:not(:last-child) {
     margin-right: 10px;
+  }
+
+  .left {
+    /* 填充剩余宽度 */
+    flex: 1;
   }
 
   .right {
