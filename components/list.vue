@@ -5,9 +5,9 @@
         {{noDataText}}
       </Card>
     </div>
-    <Row v-else v-for="(row, index) in data" :gutter="16" v-viewer>
+    <Row v-else v-for="(row, key) in data" :key="key" :gutter="16" v-viewer>
       <Col span="24">
-        <Divider v-if="index" style="margin: 18px 0;"/>
+        <Divider v-if="key" style="margin: 18px 0;"/>
         <component :is="admin.displayMode.list" :row="row"/>
         <p v-if="admin.control.show">
           <TableControl :row="row" :admin="admin"/>

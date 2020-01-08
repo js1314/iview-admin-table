@@ -5,8 +5,8 @@
         {{noDataText}}
       </Card>
     </div>
-    <Row v-else v-for="cols in rows" :gutter="16" v-viewer>
-      <Col span="6" v-for="row in cols">
+    <Row v-else v-for="(cols, ck) in rows" :key="ck" :gutter="16" v-viewer>
+      <Col span="6" v-for="(row, rk) in cols" :key="rk">
         <Card>
           <component :is="admin.displayMode.card" :row="row"/>
           <p v-if="admin.control.show">
@@ -41,6 +41,11 @@
       },
       rows() {
         return this.data.chunk(4);
+      }
+    },
+    methods: {
+      toggleSelect(row) {
+        console.log(row);
       }
     }
   };
